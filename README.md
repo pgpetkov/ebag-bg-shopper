@@ -11,7 +11,7 @@ Shopper is a procedure for forecasting time series data.  It is based on an addi
 - Issue tracker: https://github.com/pgpetkov/ebag-bg-shopper/issues
 - Source code repository: https://github.com/pgpetkov/ebag-bg-shopper
 - Python Selenium package: http://selenium-python.readthedocs.io/
-- Prophet Python package: https://pypi.python.org/pypi/fbprophet/
+
 
 ## Installation
 
