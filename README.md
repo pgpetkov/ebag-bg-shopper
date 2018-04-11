@@ -12,10 +12,7 @@ Shopper is a procedure for forecasting time series data.  It is based on an addi
 - Source code repository: https://github.com/pgpetkov/ebag-bg-shopper
 - Python Selenium package: http://selenium-python.readthedocs.io/
 
-
 ## Installation
-
-## Installation in Python
 
 Prophet is on PyPI, so you can use pip to install it:
 
@@ -24,7 +21,7 @@ Prophet is on PyPI, so you can use pip to install it:
 $ pip install ebag-shopper
 ```
 
-The major dependency that Prophet has is `selenium`.   Selenium has its own [installation instructions](http://selenium-python.readthedocs.io/).
+The major dependency that shopper has is `selenium`.   Selenium has its own [installation instructions](http://selenium-python.readthedocs.io/).
 But you will need to run `requirements.txt` as there are some other small dependencies.
 
 After installation, you can [get started!](#)
