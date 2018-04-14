@@ -27,6 +27,8 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 
+from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+
 
 
 
@@ -34,13 +36,13 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 if platform == "linux":
 	print("Linux")
-	FFdriver = ROOT_DIR + r"\firefoxdriver"
+	FFdriver = ROOT_DIR + r"/firefoxdriver"
 elif platform == "darwin":
 	print("Mac")
-	FFdriver = ROOT_DIR + r"\firefoxdriver"
+	FFdriver = ROOT_DIR + r"/firefoxdriver"
 elif platform == "win32" or "cygwin":
 	print("Windows")
-	FFdriver = ROOT_DIR + r"\firefoxdriver"
+	FFdriver = ROOT_DIR + r"/firefoxdriver"
 else:
 	print("Can't identify os")
 
@@ -52,20 +54,16 @@ sqlite_file = os.path.join(db_path)
 conn = sqlite3.connect(sqlite_file)
 c = conn.cursor()
 
+cap = DesiredCapabilities().FIREFOX
+cap["marionette"] = False
+
 prefs = {"download.default_directory" : ROOT_DIR}
 
-FFdriver = ROOT_DIR + r"\firefoxdriver.exe"
 profile = FirefoxProfile()
  
-binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe', log_file=sys.stdout)
-binary2 = FirefoxBinary('C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe', log_file=sys.stdout)
+binary = FirefoxBinary('/Users/retina/Applications/Firefox.app', log_file=sys.stdout)
 
-
-try:
-    browser = webdriver.Firefox(executable_path=FFdriver,firefox_profile=profile,firefox_binary=binary)
-except:
-    browser = webdriver.Firefox(executable_path=FFdriver,firefox_profile=profile,firefox_binary=binary2)
-
+browser = webdriver.Firefox(capabilities=cap, executable_path=FFdriver,firefox_profile=profile,firefox_binary=binary)
 
 
 browser.get("https://www.ebag.bg/")
