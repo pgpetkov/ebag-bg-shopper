@@ -56,7 +56,7 @@ prefs = {"download.default_directory" : ROOT_DIR}
 
 FFdriver = ROOT_DIR + r"\firefoxdriver.exe"
 profile = FirefoxProfile()
-
+ 
 binary = FirefoxBinary('C:\\Program Files\\Mozilla Firefox\\firefox.exe', log_file=sys.stdout)
 binary2 = FirefoxBinary('C:\\Program Files (x86)\\Mozilla Firefox\\firefox.exe', log_file=sys.stdout)
 
@@ -68,9 +68,12 @@ except:
 
 
 
+browser.get("https://www.ebag.bg/")
 
+def main():
+	promoPage = browser.find_element_by_xpath("/html/body/header/div[3]/div/div/ul/li[1]/a")
 
-
+	promoPage.click()
 
 print("Hello World!")
 
