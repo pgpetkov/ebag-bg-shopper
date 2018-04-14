@@ -36,13 +36,13 @@ ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
 if platform == "linux":
 	print("Linux")
-	FFdriver = ROOT_DIR + r"/firefoxdriver"
+	FFdriver = ROOT_DIR + r"/geckodriver"
 elif platform == "darwin":
 	print("Mac")
-	FFdriver = ROOT_DIR + r"/firefoxdriver"
+	FFdriver = ROOT_DIR + r"/geckodriver"
 elif platform == "win32" or "cygwin":
 	print("Windows")
-	FFdriver = ROOT_DIR + r"/firefoxdriver"
+	FFdriver = ROOT_DIR + r"/geckodriver"
 else:
 	print("Can't identify os")
 
@@ -54,16 +54,10 @@ sqlite_file = os.path.join(db_path)
 conn = sqlite3.connect(sqlite_file)
 c = conn.cursor()
 
-cap = DesiredCapabilities().FIREFOX
-cap["marionette"] = False
-
-prefs = {"download.default_directory" : ROOT_DIR}
-
-profile = FirefoxProfile()
  
-binary = FirefoxBinary('/Users/retina/Applications/Firefox.app', log_file=sys.stdout)
+#binary = FirefoxBinary('/Users/retina/Applications/Firefox.app/Contents/MacOS/firefox-bin', log_file=sys.stdout)
 
-browser = webdriver.Firefox(capabilities=cap, executable_path=FFdriver,firefox_profile=profile,firefox_binary=binary)
+browser = webdriver.Firefox(executable_path=FFdriver)
 
 
 browser.get("https://www.ebag.bg/")
@@ -73,6 +67,7 @@ def main():
 
 	promoPage.click()
 
+main()
 print("Hello World!")
 
 
