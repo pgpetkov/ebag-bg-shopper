@@ -11,6 +11,7 @@ import os
 import sys
 import sqlite3
 import datetime
+import time
 
 from tqdm import tqdm
 
@@ -29,11 +30,6 @@ from selenium.common.exceptions import NoSuchElementException
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-
-
-
-
-
 db_path = os.path.join(ROOT_DIR, 'db.sqlite3')
 sqlite_file = os.path.join(db_path)
 conn = sqlite3.connect(sqlite_file)
@@ -47,8 +43,12 @@ browser.get("https://www.ebag.bg/")
 
 def main():
 	promoPage = browser.find_element_by_xpath("/html/body/header/div[3]/div/div/ul/li[1]/a")
-
 	promoPage.click()
+
+	time.sleep(10)
+	for i in range(1,100):
+		browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+		time.sleep(1)
 
 main()
 print("Hello World!")
