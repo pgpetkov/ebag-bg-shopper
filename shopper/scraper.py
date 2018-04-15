@@ -41,6 +41,18 @@ browser = webdriver.Firefox(executable_path=FFdriver)
 
 browser.get("https://www.ebag.bg/")
 
+class Item:
+
+	def __init__(self, name, price, category, promo, offer):
+		self.name = name
+		self.price = price
+		self.category = category
+		self.promo = promo
+		self.offer = offer
+
+
+cheescake = Item("Cheese Cake", 2.59, 'Sweets', True, False)
+
 def main():
 	promoPage = browser.find_element_by_xpath("/html/body/header/div[3]/div/div/ul/li[1]/a")
 	promoPage.click()
