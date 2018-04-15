@@ -11,7 +11,6 @@ import os
 import sys
 import sqlite3
 import datetime
-from sys import platform
 
 from tqdm import tqdm
 
@@ -27,24 +26,10 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import TimeoutException
 from selenium.common.exceptions import NoSuchElementException
 
-from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
-
-
-
 
 ROOT_DIR = os.path.dirname(os.path.abspath(__file__))
 
-if platform == "linux":
-	print("Linux")
-	FFdriver = ROOT_DIR + r"/geckodriver"
-elif platform == "darwin":
-	print("Mac")
-	FFdriver = ROOT_DIR + r"/geckodriver"
-elif platform == "win32" or "cygwin":
-	print("Windows")
-	FFdriver = ROOT_DIR + r"/geckodriver"
-else:
-	print("Can't identify os")
+
 
 
 
@@ -54,9 +39,7 @@ sqlite_file = os.path.join(db_path)
 conn = sqlite3.connect(sqlite_file)
 c = conn.cursor()
 
- 
-#binary = FirefoxBinary('/Users/retina/Applications/Firefox.app/Contents/MacOS/firefox-bin', log_file=sys.stdout)
-
+FFdriver = ROOT_DIR + r"/geckodriver"
 browser = webdriver.Firefox(executable_path=FFdriver)
 
 
