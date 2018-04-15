@@ -45,7 +45,18 @@ def main():
 	promoPage = browser.find_element_by_xpath("/html/body/header/div[3]/div/div/ul/li[1]/a")
 	promoPage.click()
 
-	time.sleep(10)
+	pageLanguage = browser.find_element_by_xpath("/html/body/header/div[3]/div/div/ul/li[5]/a")
+
+	if pageLanguage.text == "EN":
+		pageLanguage.click()
+	else:
+		pass
+
+	time.sleep(15)
+
+	browser.quit()
+
+	time.sleep(100)
 	for i in range(1,100):
 		browser.execute_script("window.scrollTo(0, document.body.scrollHeight);")
 		time.sleep(1)
